@@ -33,8 +33,9 @@ void setup() {
 
 void loop() {
   updatePins();
-  updateCarFromCanInfo();
+  //updateCarFromCanInfo();
   updateCarFromPins();
   sendCanData();
+  printPinsData();
 }
 

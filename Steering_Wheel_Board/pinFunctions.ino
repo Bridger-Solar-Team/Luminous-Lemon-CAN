@@ -8,7 +8,7 @@ void setupPins() {
   pinMode(PIN6, INPUT_PULLDOWN);
   pinMode(PIN7, INPUT_PULLDOWN);
   pinMode(PIN8, INPUT_PULLDOWN);
-  pinMode(PIN9, INPUT_PULLDOWN);
+  pinMode(PIN9, INPUT_PULLUP);
   pinMode(PIN10, INPUT_PULLDOWN);
   pinMode(PIN11, INPUT_PULLDOWN);
   pinMode(PIN12, INPUT_PULLDOWN);

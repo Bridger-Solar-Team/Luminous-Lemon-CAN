@@ -43,7 +43,7 @@ bool dispToggle;
 bool hazzards;
 bool cruiseControl;
 bool brakePressed;
-int throttle;
+float throttle;
 
 int batteryVoltageLV;
 int workingvoltageLV;
@@ -59,3 +59,8 @@ bool overCharge;
 bool overDischarge;
 bool bmsFailure;
 bool overTemp;
+
+char old_line0;
+char old_line1;
+char line0;
+char line1;
