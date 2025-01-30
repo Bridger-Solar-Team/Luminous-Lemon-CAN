@@ -33,9 +33,11 @@ void setup() {
 
 void loop() {
   updatePins();
-  //updateCarFromCanInfo();
+  updateCarFromCanInfo();
   updateCarFromPins();
+  steeringCalculations();
   sendCanData();
   printPinsData();
+  updateDisplay();
 }
 

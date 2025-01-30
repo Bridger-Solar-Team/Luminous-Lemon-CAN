@@ -45,12 +45,12 @@ bool cruiseControl;
 bool brakePressed;
 float throttle;
 
-int batteryVoltageLV;
-int workingvoltageLV;
+float batteryVoltageLV;
+float workingvoltageLV;
 
 bool sdFailure;
 
-int soc;
+float soc;
 int dcl;
 int ccl;
 int currentDraw;
@@ -60,7 +60,9 @@ bool overDischarge;
 bool bmsFailure;
 bool overTemp;
 
-char old_line0;
-char old_line1;
-char line0;
-char line1;
+String old_line0;
+String old_line1;
+String line0;
+String line1;
+bool cruiseActive;
+float cruiseSpeed;
