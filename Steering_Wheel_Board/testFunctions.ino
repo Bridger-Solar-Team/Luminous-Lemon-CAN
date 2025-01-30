@@ -2,5 +2,7 @@ void printPinsData() {
   Serial.print("Thr: ");
   Serial.print(throttle);
   Serial.print(" Brake: ");
-  Serial.println(brakePressed);
+  Serial.print(brakePressed);
+  Serial.print(" Left: ");
+  Serial.println(leftTurn);
 }

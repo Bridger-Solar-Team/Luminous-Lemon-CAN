@@ -11,3 +11,13 @@ void steeringCalculations() {
     cruiseActive = false;
   }
 }
+
+void runLights() {
+  //Test
+  if(throttle > 0.8) {
+    digitalWrite(PWR1, HIGH);
+    Serial.print("LED ON");
+  } else {
+    digitalWrite(PWR1, LOW);
+  }
+}
