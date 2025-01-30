@@ -8,7 +8,9 @@ int dataID;
 bool newCanData;
 
 //Store pin state data
-uint8_t pins[13];
+int pins[13];
+int pinsCanSpacing = 100; //Time between CAN frames in milliseconds
+unsigned long pinsCanTime = 0;
 
 //LCD Setup
 LiquidCrystal_I2C lcd(0x27, 16, 2);
@@ -27,12 +29,12 @@ void setup() {
   lcd.backlight();
 
   setupPins();
-
 }
 
 void loop() {
   updatePins();
   updateCarFromCanInfo();
   updateCarFromPins();
+  sendCanData();
 }
 
