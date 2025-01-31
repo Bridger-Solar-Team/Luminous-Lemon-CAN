@@ -1,8 +1,32 @@
 void printPinsData() {
-  Serial.print("Thr: ");
-  Serial.print(throttle);
-  Serial.print(" Brake: ");
+  Serial.print("Pwr:");
+  Serial.print(powerOn);
+  Serial.print(" Left:");
+  Serial.print(leftTurn);
+  Serial.print(" Right:");
+  Serial.print(rightTurn);
+  Serial.print(" Horn:");
+  Serial.print(horn);
+  Serial.print(" Forward:");
+  Serial.print(fwdRev);
+  Serial.print( "Display Toggle:");
+  Serial.print(dispToggle);
+  Serial.print( "Hazzards:");
+  Serial.print(hazzards);
+  Serial.print( "Cruise:");
+  Serial.print(cruiseControl);
+  Serial.print(" Brake:");
   Serial.print(brakePressed);
-  Serial.print(" Left: ");
-  Serial.println(leftTurn);
+  Serial.print(" Thr:");
+  Serial.println(throttle);
 }
+// powerOn = pins[1]%2;
+//   leftTurn = pins[2]%2;
+//   rightTurn = pins[3]%2;
+//   horn = pins[4]%2;
+//   fwdRev = pins[5]%2;
+//   dispToggle = pins[6]%2;
+//   hazzards = pins[7]%2;
+//   cruiseControl = pins[8]%2;
+//   brakePressed = pins[9]%2;
+//   throttle = pins[12]/4095.0;

@@ -13,7 +13,7 @@ void steeringCalculations() {
 }
 
 void runLights() {
-  updateBlink()
+  updateBlink();
   if(hazzards) {
     digitalWrite(PWR2, blink);
     digitalWrite(PWR3, blink);
