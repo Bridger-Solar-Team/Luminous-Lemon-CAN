@@ -13,11 +13,23 @@ void steeringCalculations() {
 }
 
 void runLights() {
-  //Test
-  if(throttle > 0.8) {
-    digitalWrite(PWR1, HIGH);
-    Serial.print("LED ON");
+  updateBlink()
+  if(hazzards) {
+    digitalWrite(PWR2, blink);
+    digitalWrite(PWR3, blink);
+  } else if (rightTurn) {
+    digitalWrite(PWR2, blink);
+  } else if (leftTurn) {
+    digitalWrite(PWR3, blink);
   } else {
-    digitalWrite(PWR1, LOW);
+    digitalWrite(PWR2, LOW);
+    digitalWrite(PWR3, LOW);
+  }
+}
+
+void updateBlink() {
+  if(millis()-blinkTimer > 300) {
+    blinkTimer = millis();
+    blink = !blink;
   }
 }

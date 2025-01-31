@@ -66,3 +66,5 @@ String line0;
 String line1;
 bool cruiseActive;
 float cruiseSpeed;
+bool blink = false;
+unsigned long blinkTimer = 0;

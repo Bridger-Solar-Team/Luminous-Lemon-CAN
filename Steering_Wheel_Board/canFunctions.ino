@@ -21,6 +21,7 @@ void sendCanData() {
     canFrame[1] += dispToggle << 2;
     canFrame[1] += hazzards << 1;
     canFrame[1] += cruiseControl;
+    canFrame[2] += brakePressed << 7;
     canFrame[3] = throttle*200.0;
 
     //Can Frame Code
@@ -35,17 +36,6 @@ void sendCanData() {
 }
 
 void updateCarFromCanInfo() {
-  //From the dash board
-  // powerOn = canData[1][1] && 0b10000000;
-  // leftTurn = canData[1][1] && 0b01000000;
-  // rightTurn = canData[1][1] && 0b00100000;
-  // horn = canData[1][1] && 0b00010000;
-  // fwdRev = canData[1][1] && 0b00001000;
-  // dispToggle = canData[1][1] && 0b00000100;
-  // hazzards = canData[1][1] && 0b00000010;
-  // cruiseControl = canData[1][1] && 0b00000001;
-  // throttle = canData[1][3]/200.0;
-
   //From the battery box board
   batteryVoltageLV = canData[2][1]/10.0;
   workingvoltageLV = canData[2][2]/10.0;
