@@ -42,7 +42,11 @@ void loop() {
   sendCanData();
   printPinsData();
   runLights();
-  // updateDisplay();
-  testLCD();
+  updateDisplay();
+  // testLCD();
+  // lcd.noBacklight();
+  // delay(1000);
+  // lcd.backlight();
+  // delay(1000);
 }
 

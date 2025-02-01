@@ -9,11 +9,11 @@ void printPinsData() {
   Serial.print(horn);
   Serial.print(" Forward:");
   Serial.print(fwdRev);
-  Serial.print( "Display Toggle:");
+  Serial.print(" Display Toggle:");
   Serial.print(dispToggle);
-  Serial.print( "Hazzards:");
+  Serial.print(" Hazzards:");
   Serial.print(hazzards);
-  Serial.print( "Cruise:");
+  Serial.print(" Cruise:");
   Serial.print(cruiseControl);
   Serial.print(" Brake:");
   Serial.print(brakePressed);
