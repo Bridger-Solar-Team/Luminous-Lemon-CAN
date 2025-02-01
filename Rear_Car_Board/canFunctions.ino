@@ -24,15 +24,15 @@ void sendCanData() {
 
 void updateCarFromCanInfo() {
   //From the dash board
-  // powerOn = canData[1][1] && 0b10000000;
-  // leftTurn = canData[1][1] && 0b01000000;
-  // rightTurn = canData[1][1] && 0b00100000;
-  // horn = canData[1][1] && 0b00010000;
-  // fwdRev = canData[1][1] && 0b00001000;
-  // dispToggle = canData[1][1] && 0b00000100;
-  // hazzards = canData[1][1] && 0b00000010;
-  // cruiseControl = canData[1][1] && 0b00000001;
-  // throttle = canData[1][3]/200.0;
+  powerOn = canData[1][1] && 0b10000000;
+  leftTurn = canData[1][1] && 0b01000000;
+  rightTurn = canData[1][1] && 0b00100000;
+  horn = canData[1][1] && 0b00010000;
+  fwdRev = canData[1][1] && 0b00001000;
+  dispToggle = canData[1][1] && 0b00000100;
+  hazzards = canData[1][1] && 0b00000010;
+  cruiseControl = canData[1][1] && 0b00000001;
+  throttle = canData[1][3]/200.0;
 
   //From the battery box board
   batteryVoltageLV = canData[2][1]/10.0;
@@ -59,9 +59,9 @@ void readCAN(int packetSize) {
   dataID = CAN.packetId();
   switch(dataID) {
     //Dashboard
-    // case DASH_CANID:
-    //   canArray = 1;
-    //   break;
+    case DASH_CANID:
+      canArray = 1;
+      break;
     //Battery Box Board
     case BATTERYBOX_CANID:
       canArray = 2;

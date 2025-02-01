@@ -28,7 +28,7 @@ void runLights() {
 }
 
 void updateBlink() {
-  if(millis()-blinkTimer > 300) {
+  if(millis()-blinkTimer > 1000.0/blinkFrequency) {
     blinkTimer = millis();
     blink = !blink;
   }

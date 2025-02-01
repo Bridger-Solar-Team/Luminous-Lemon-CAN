@@ -9,8 +9,6 @@ bool newCanData;
 
 //Store pin state data
 int pins[13];
-int pinsCanSpacing = 100; //Time between CAN frames in milliseconds
-unsigned long pinsCanTime = 0;
 
 //LCD Setup
 LiquidCrystal_I2C lcd(0x27, 16, 2);
