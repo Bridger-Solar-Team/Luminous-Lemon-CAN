@@ -19,4 +19,12 @@ void printPinsData() {
   Serial.print(brakePressed);
   Serial.print(" Thr:");
   Serial.println(throttle);
+<<<<<<< Updated upstream
+=======
+}
+
+void testLCD() {
+  lcd.setCursor(0, 0);
+  lcd.print("Test Message");
+>>>>>>> Stashed changes
 }
