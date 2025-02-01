@@ -42,6 +42,7 @@ void loop() {
   sendCanData();
   printPinsData();
   runLights();
-  updateDisplay();
+  // updateDisplay();
+  testLCD();
 }
 
