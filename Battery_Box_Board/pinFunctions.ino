@@ -12,6 +12,8 @@ void setupPins() {
   pinMode(PIN10, INPUT_PULLDOWN);
   pinMode(PIN11, INPUT_PULLDOWN);
   pinMode(PIN12, INPUT_PULLDOWN);
+
+  pinMode(PWR1, OUTPUT);
 }
 
 void updatePins() {
@@ -30,14 +32,5 @@ void updatePins() {
 }
 
 void updateCarFromPins() {
-  powerOn = pins[1]%2;
-  leftTurn = pins[2]%2;
-  rightTurn = pins[3]%2;
-  horn = pins[4]%2;
-  fwdRev = pins[5]%2;
-  dispToggle = pins[6]%2;
-  hazzards = pins[7]%2;
-  cruiseControl = pins[8]%2;
-  brakePressed = pins[9]%2;
-  throttle = pins[12]/4095.0;
+
 }
