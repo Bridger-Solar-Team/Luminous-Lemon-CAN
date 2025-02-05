@@ -38,8 +38,8 @@ void updateCarFromCanInfo() {
   throttle = canData[1][3]/200.0;
 
   //From the battery box board
-  batteryVoltageLV = canData[2][1]/10.0;
-  workingvoltageLV = canData[2][2]/10.0;
+  // batteryVoltageLV = canData[2][1]/10.0;
+  // workingvoltageLV = canData[2][2]/10.0;
 
   //From the data logging board
   sdFailure = canData[3][1] && 0b10000000;

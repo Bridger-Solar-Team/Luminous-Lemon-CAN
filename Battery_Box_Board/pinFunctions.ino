@@ -32,5 +32,6 @@ void updatePins() {
 }
 
 void updateCarFromPins() {
-
+  workingVoltage = workingSensor.getBusVoltage_V();
+  batteryVoltage = batterySensor.getBusVoltage_V();
 }
