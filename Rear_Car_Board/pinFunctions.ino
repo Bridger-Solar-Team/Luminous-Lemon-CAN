@@ -12,6 +12,10 @@ void setupPins() {
   pinMode(PIN10, INPUT_PULLDOWN);
   pinMode(PIN11, INPUT_PULLDOWN);
   pinMode(PIN12, INPUT_PULLDOWN);
+
+  pinMode(PWR1, OUTPUT);
+  pinMode(PWR4, OUTPUT);
+  pinMode(PWR5, OUTPUT);
 }
 
 void updatePins() {

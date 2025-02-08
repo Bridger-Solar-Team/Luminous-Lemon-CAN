@@ -5,6 +5,7 @@
 #define BATTERYBOX_CANID 25
 #define LOGGER_CANID 14
 #define BMS_CANID 30
+#define REAR_CANID 18
 
 #define PIN1 5
 #define PIN2 18
@@ -56,3 +57,7 @@ bool overCharge;
 bool overDischarge;
 bool bmsFailure;
 bool overTemp;
+
+bool blink = false;
+unsigned long blinkTimer = 0; //Used for flashing lights
+int blinkFrequency = 2;

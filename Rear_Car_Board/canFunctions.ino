@@ -11,8 +11,9 @@ void printCAN() {
 
 void sendCanData() {
   if(millis() - pinsCanTime > pinsCanSpacing) {
+    byte canFrame[8];
     //Can Frame Code
-    CAN.beginPacket(DASH_CANID);
+    CAN.beginPacket(REAR_CANID);
     for (int i = 0; i < 8; i++) {
       CAN.write(canFrame[i]);
     }
@@ -32,6 +33,7 @@ void updateCarFromCanInfo() {
   dispToggle = canData[1][1] && 0b00000100;
   hazzards = canData[1][1] && 0b00000010;
   cruiseControl = canData[1][1] && 0b00000001;
+  brakePressed = canData[1][2] && 0b10000000;
   throttle = canData[1][3]/200.0;
 
   //From the battery box board
