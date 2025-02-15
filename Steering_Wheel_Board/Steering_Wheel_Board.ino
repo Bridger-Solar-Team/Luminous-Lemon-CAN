@@ -40,9 +40,13 @@ void loop() {
 
   //Outputs
   sendCanData();
-  printPinsData();
+  // printPinsData();
   runLights();
   updateDisplay();
+  if(newCanData) {
+    printBMSdata();
+    newCanData = false;
+  }
   // testLCD();
   // lcd.noBacklight();
   // delay(1000);

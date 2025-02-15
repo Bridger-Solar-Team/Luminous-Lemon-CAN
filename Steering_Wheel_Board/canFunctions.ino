@@ -45,6 +45,7 @@ void updateCarFromCanInfo() {
 
   //From the BMS
   soc = canData[4][1]/200.0;
+  Serial.println(canData[4][1], HEX);
   dcl = canData[4][2]/2.0;
   ccl = canData[4][3]/2.0;
   currentDraw = canData[4][4]/2.0;
@@ -57,6 +58,7 @@ void updateCarFromCanInfo() {
 
 
 void readCAN(int packetSize) {
+  newCanData = true;
   int canArray = 0;
   dataID = CAN.packetId();
   switch(dataID) {

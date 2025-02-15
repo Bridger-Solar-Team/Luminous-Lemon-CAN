@@ -25,3 +25,8 @@ void testLCD() {
   lcd.setCursor(0, 0);
   lcd.print("Test Message");
 }
+
+void printBMSdata() {
+  Serial.print("BMS says: ");
+  Serial.println(soc);
+}
