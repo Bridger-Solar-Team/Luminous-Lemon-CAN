@@ -38,34 +38,33 @@ void sendCanData() {
 void updateCarFromCanInfo() {
   //From the battery box board
   batteryVoltageLV = canData[2][1]/10.0;
-  workingvoltageLV = canData[2][2]/10.0;
 
   //From the data logging board
   sdFailure = canData[3][1] && 0b10000000;
 
   //From the BMS
-  soc = canData[4][1]/200.0;
-  Serial.println(canData[4][1], HEX);
-  dcl = canData[4][2]/2.0;
-  ccl = canData[4][3]/2.0;
-  currentDraw = canData[4][4]/2.0;
-  overCurrent = canData[4][5] && 0b10000000;
-  overCharge = canData[4][5] && 0b01000000;
-  overDischarge = canData[4][5] && 0b00100000;
-  bmsFailure = canData[4][5] && 0b00010000;
-  overTemp = canData[4][5] && 0b00001000;
+  soc = canData[4][0]/200.0;
+  dcl = canData[4][1]/2.0;
+  ccl = canData[4][2]/2.0;
+  currentDraw = canData[4][3]/2.0;
+  overCurrent = canData[4][4] && 0b10000000;
+  overCharge = canData[4][4] && 0b01000000;
+  overDischarge = canData[4][4] && 0b00100000;
+  bmsFailure = canData[4][4] && 0b00010000;
+  overTemp = canData[4][4] && 0b00001000;
+  workingVoltageLV = canData[4][5]/10.0 + 0.7;
 }
 
 
 void readCAN(int packetSize) {
-  newCanData = true;
-  int canArray = 0;
   dataID = CAN.packetId();
+
+  canArray = 0;
   switch(dataID) {
     //Dashboard
-    // case DASH_CANID:
-    //   canArray = 1;
-    //   break;
+    case DASH_CANID:
+      canArray = 1;
+      break;
     //Battery Box Board
     case BATTERYBOX_CANID:
       canArray = 2;

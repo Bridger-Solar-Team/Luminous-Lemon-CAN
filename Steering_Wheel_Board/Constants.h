@@ -46,7 +46,7 @@ bool brakePressed;
 float throttle;
 
 float batteryVoltageLV;
-float workingvoltageLV;
+float workingVoltageLV;
 
 bool sdFailure;
 
@@ -71,3 +71,4 @@ unsigned long blinkTimer = 0; //Used for flashing lights
 int blinkFrequency = 2;
 int pinsCanSpacing = 100; //Time between CAN frames in milliseconds
 unsigned long pinsCanTime = 0; //Used for timing CAN messages
+int canArray = 0;

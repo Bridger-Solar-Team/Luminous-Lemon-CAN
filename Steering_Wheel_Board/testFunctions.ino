@@ -27,6 +27,5 @@ void testLCD() {
 }
 
 void printBMSdata() {
-  Serial.print("BMS says: ");
-  Serial.println(soc);
+  Serial.println(workingVoltageLV);
 }

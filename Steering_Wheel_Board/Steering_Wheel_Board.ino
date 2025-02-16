@@ -16,11 +16,12 @@ LiquidCrystal_I2C lcd(0x27, 16, 2);
 void setup() {
   //CAN setup
   CAN.setPins(CRX, CTX);
-  CAN.begin(500E3);
+  CAN.begin(1000E3);
   CAN.onReceive(readCAN);
 
   //Serial setup
   Serial.begin(115200);
+  Serial.println("New Program");
 
   //LCD Setup
   lcd.init();
@@ -39,18 +40,14 @@ void loop() {
   steeringCalculations();
 
   //Outputs
-  sendCanData();
+  // sendCanData();
   // printPinsData();
-  runLights();
+  // runLights();
   updateDisplay();
+  
   if(newCanData) {
     printBMSdata();
     newCanData = false;
   }
-  // testLCD();
-  // lcd.noBacklight();
-  // delay(1000);
-  // lcd.backlight();
-  // delay(1000);
 }
 
