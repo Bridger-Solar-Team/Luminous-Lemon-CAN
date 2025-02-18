@@ -45,8 +45,8 @@ bool cruiseControl;
 bool brakePressed;
 int throttle;
 
-int batteryVoltageLV;
-int workingvoltageLV;
+float batteryVoltageLV;
+float workingVoltageLV;
 
 bool sdFailure;
 
@@ -59,3 +59,5 @@ bool overCharge;
 bool overDischarge;
 bool bmsFailure;
 bool overTemp;
+
+int canArray = 0;

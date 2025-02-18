@@ -86,18 +86,18 @@ void updateDisplay() {
   }
   else {
     line0 += "W"; //1
-    line0 += (int)round(workingVoltageLV/10)%10;//2
-    line0 += (int)round(workingVoltageLV)%10;//3
+    line0 += (int)(workingVoltageLV/10)%10;//2
+    line0 += (int)(workingVoltageLV)%10;//3
     line0 += ".";//4
     line0 += (int)round(workingVoltageLV*10)%10;//5
     line0 += "B"; //6
-    line0 += (int)round(batteryVoltageLV/10)%10;//7
-    line0 += (int)round(batteryVoltageLV)%10;//8
+    line0 += (int)(batteryVoltageLV/10)%10;//7
+    line0 += (int)(batteryVoltageLV)%10;//8
     line0 += ".";//9
     line0 += (int)round(batteryVoltageLV*10)%10;//10
     line0 += "P"; //11
-    line0 += (int)round(currentDraw/10)%10;//12
-    line0 += (int)round(currentDraw)%10;//13
+    line0 += (int)(currentDraw/10)%10;//12
+    line0 += (int)(currentDraw)%10;//13
     line0 += ".";//14
     line0 += (int)round(currentDraw*10)%10;//15
     line0 += "A";

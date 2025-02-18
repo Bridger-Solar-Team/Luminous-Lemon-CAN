@@ -15,9 +15,7 @@ LiquidCrystal_I2C lcd(0x27, 16, 2);
 
 void setup() {
   //CAN setup
-  CAN.setPins(CRX, CTX);
-  CAN.begin(1000E3);
-  CAN.onReceive(readCAN);
+  setupCAN();
 
   //Serial setup
   Serial.begin(115200);

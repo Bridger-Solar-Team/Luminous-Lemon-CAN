@@ -15,13 +15,10 @@ unsigned long pinsCanTime = 0;
 
 //Voltage sensors
 Adafruit_INA219 batterySensor(0x40);
-Adafruit_INA219 workingSensor(0x41);
 
 void setup() {
   //CAN setup
-  CAN.setPins(CRX, CTX);
-  CAN.begin(500E3);
-  CAN.onReceive(readCAN);
+  setupCAN();
 
   //Serial setup
   Serial.begin(115200);
@@ -30,7 +27,6 @@ void setup() {
 
   //Set up voltage monitors
   batterySensor.begin();
-  workingSensor.begin();
 }
 
 void loop() {

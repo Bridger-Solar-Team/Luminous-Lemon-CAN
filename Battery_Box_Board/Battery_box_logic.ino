@@ -18,4 +18,6 @@ bool allowRun() {
 
 void controlContactors() {
   digitalWrite(PWR1, allowRun());
+  // Serial.print("Contactor state: ");
+  // Serial.println(allowRun());
 }

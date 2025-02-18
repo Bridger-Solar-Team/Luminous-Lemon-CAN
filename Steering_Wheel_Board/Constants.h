@@ -31,7 +31,7 @@
 #define PWR4 27
 #define PWR5 15
 
-#define DCL_WARNING_SETPOINT 30
+#define DCL_WARNING_SETPOINT 20
 #define CCL_WARNING_SETPOINT 30
 
 bool powerOn;

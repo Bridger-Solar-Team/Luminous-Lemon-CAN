@@ -9,6 +9,12 @@ void printCAN() {
   }
 }
 
+void setupCAN() {
+  CAN.setPins(CRX, CTX);
+  CAN.begin(1000E3);
+  CAN.onReceive(readCAN);
+}
+
 void sendCanData() {
   if(millis() - pinsCanTime > pinsCanSpacing) {
     //Can Frame Prep Code
@@ -38,6 +44,8 @@ void sendCanData() {
 void updateCarFromCanInfo() {
   //From the battery box board
   batteryVoltageLV = canData[2][1]/10.0;
+  Serial.print(" Batt LV: ");
+  Serial.println(batteryVoltageLV);
 
   //From the data logging board
   sdFailure = canData[3][1] && 0b10000000;
@@ -58,7 +66,6 @@ void updateCarFromCanInfo() {
 
 void readCAN(int packetSize) {
   dataID = CAN.packetId();
-
   canArray = 0;
   switch(dataID) {
     //Dashboard
@@ -90,4 +97,4 @@ void readCAN(int packetSize) {
     }
   }
   newCanData = true;
-}
+} 
