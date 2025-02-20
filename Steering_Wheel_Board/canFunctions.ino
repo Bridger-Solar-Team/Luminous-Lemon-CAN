@@ -19,16 +19,16 @@ void sendCanData() {
   if(millis() - pinsCanTime > pinsCanSpacing) {
     //Can Frame Prep Code
     byte canFrame[8];
-    canFrame[1] += powerOn << 7;
-    canFrame[1] += leftTurn << 6;
-    canFrame[1] += rightTurn << 5;
-    canFrame[1] += horn << 4;
-    canFrame[1] += fwdRev << 3;
-    canFrame[1] += dispToggle << 2;
-    canFrame[1] += hazzards << 1;
-    canFrame[1] += cruiseControl;
-    canFrame[2] += brakePressed << 7;
-    canFrame[3] = throttle*200.0;
+    canFrame[0] += powerOn << 7;
+    canFrame[0] += leftTurn << 6;
+    canFrame[0] += rightTurn << 5;
+    canFrame[0] += horn << 4;
+    canFrame[0] += fwdRev << 3;
+    canFrame[0] += dispToggle << 2;
+    canFrame[0] += hazzards << 1;
+    canFrame[0] += cruiseControl;
+    canFrame[1] += brakePressed << 7;
+    canFrame[2] = throttle*200.0;
 
     //Can Frame Code
     CAN.beginPacket(DASH_CANID);
@@ -44,8 +44,6 @@ void sendCanData() {
 void updateCarFromCanInfo() {
   //From the battery box board
   batteryVoltageLV = canData[2][1]/10.0;
-  Serial.print(" Batt LV: ");
-  Serial.println(batteryVoltageLV);
 
   //From the data logging board
   sdFailure = canData[3][1] && 0b10000000;

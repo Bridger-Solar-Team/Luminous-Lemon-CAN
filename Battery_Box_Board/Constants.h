@@ -50,7 +50,7 @@ float workingVoltageLV;
 
 bool sdFailure;
 
-int soc;
+float soc;
 int dcl;
 int ccl;
 int currentDraw;

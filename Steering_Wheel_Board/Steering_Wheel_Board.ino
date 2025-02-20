@@ -38,13 +38,13 @@ void loop() {
   steeringCalculations();
 
   //Outputs
-  // sendCanData();
+  sendCanData();
   // printPinsData();
   // runLights();
   updateDisplay();
   
   if(newCanData) {
-    printBMSdata();
+    // printBMSdata();
     newCanData = false;
   }
 }

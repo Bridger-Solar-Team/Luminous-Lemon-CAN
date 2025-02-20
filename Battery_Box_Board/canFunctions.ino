@@ -38,16 +38,16 @@ void sendCanData() {
 
 void updateCarFromCanInfo() {
   //From the dash board
-  powerOn = canData[1][1] && 0b10000000;
-  leftTurn = canData[1][1] && 0b01000000;
-  rightTurn = canData[1][1] && 0b00100000;
-  horn = canData[1][1] && 0b00010000;
-  fwdRev = canData[1][1] && 0b00001000;
-  dispToggle = canData[1][1] && 0b00000100;
-  hazzards = canData[1][1] && 0b00000010;
-  cruiseControl = canData[1][1] && 0b00000001;
-  brakePressed = canData[1][2] && 0b10000000;
-  throttle = canData[1][3]/200.0;
+  powerOn = (canData[1][0] >= 0x80);
+  leftTurn = canData[1][0] && 0b01000000;
+  rightTurn = canData[1][0] && 0b00100000;
+  horn = canData[1][0] && 0b00010000;
+  fwdRev = canData[1][0] && 0b00001000;
+  dispToggle = canData[1][0] && 0b00000100;
+  hazzards = canData[1][0] && 0b00000010;
+  cruiseControl = canData[1][0] && 0b00000001;
+  brakePressed = canData[1][1] && 0b10000000;
+  throttle = canData[1][2]/200.0;
 
   //From the battery box board
   // batteryVoltageLV = canData[2][1]/10.0;
@@ -60,11 +60,11 @@ void updateCarFromCanInfo() {
   dcl = canData[4][1]/2.0;
   ccl = canData[4][2]/2.0;
   currentDraw = canData[4][3]/2.0;
-  overCurrent = canData[4][4] && 0b10000000;
-  overCharge = canData[4][4] && 0b01000000;
-  overDischarge = canData[4][4] && 0b00100000;
-  bmsFailure = canData[4][4] && 0b00010000;
-  overTemp = canData[4][4] && 0b00001000;
+  overCurrent = canData[4][4] && 0b00000001;
+  overCharge = canData[4][4] && 0b00000010;
+  overDischarge = canData[4][4] && 0b00000100;
+  bmsFailure = canData[4][4] && 0b00001000;
+  overTemp = canData[4][4] && 0b00010000;
   workingVoltageLV = canData[4][5]/10.0 + 0.7;
 }
 
