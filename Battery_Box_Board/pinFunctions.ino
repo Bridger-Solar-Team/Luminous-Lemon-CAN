@@ -15,6 +15,9 @@ void setupPins() {
 
   pinMode(PWR1, OUTPUT);
   digitalWrite(PWR1, LOW);
+
+  pinMode(PWR2, OUTPUT);
+  digitalWrite(PWR2, LOW);
 }
 
 void updatePins() {

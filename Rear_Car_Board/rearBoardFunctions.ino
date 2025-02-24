@@ -10,7 +10,7 @@ void runMotor() {
 
 void runLights() {
   updateBlink();
-  digitalWrite(PWR4, brakePressed);
+  digitalWrite(PWR1, brakePressed);
   if (
     !overCurrent
     && !overCharge
@@ -18,9 +18,9 @@ void runLights() {
     && !bmsFailure
     && !overTemp
   ) {
-    digitalWrite(PWR5, LOW);
+    digitalWrite(PWR2, LOW);
   } else {
-    digitalWrite(PWR5, blink);
+    digitalWrite(PWR2, blink);
   }
 }
 

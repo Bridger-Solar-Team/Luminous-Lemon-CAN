@@ -5,6 +5,7 @@
 #define BATTERYBOX_CANID 25
 #define LOGGER_CANID 14
 #define BMS_CANID 30
+#define REAR_CANID 18
 
 #define PIN1 5
 #define PIN2 18
@@ -43,7 +44,7 @@ bool dispToggle;
 bool hazzards;
 bool cruiseControl;
 bool brakePressed;
-int throttle;
+float throttle;
 
 float batteryVoltageLV;
 float workingVoltageLV;
@@ -53,7 +54,7 @@ bool sdFailure;
 float soc;
 int dcl;
 int ccl;
-int currentDraw;
+float currentDraw;
 bool overCurrent;
 bool overCharge;
 bool overDischarge;
@@ -61,3 +62,6 @@ bool bmsFailure;
 bool overTemp;
 
 int canArray = 0;
+unsigned long powerOnMillis = 0;
+unsigned long currentTimer = 0;
+bool currentOver = false;

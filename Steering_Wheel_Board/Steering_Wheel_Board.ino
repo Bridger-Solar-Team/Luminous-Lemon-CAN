@@ -40,7 +40,7 @@ void loop() {
   //Outputs
   sendCanData();
   // printPinsData();
-  // runLights();
+  runLights();
   updateDisplay();
   
   if(newCanData) {

@@ -45,5 +45,7 @@ void updateCarFromPins() {
   horn = pins[7]%2;
   cruiseControl = pins[8]%2;
   brakePressed = pins[9]%2;
-  throttle = pins[12]/4095.0;
+  throttle = floatMap(pins[12]/4095.0, tLow, tHigh, 0.0, 1.0);
+  throttle = max(throttle, (float) 0.0);
+  throttle = min(throttle, (float) 1.0);
 }

@@ -5,6 +5,7 @@
 #define BATTERYBOX_CANID 25
 #define LOGGER_CANID 14
 #define BMS_CANID 30
+#define REAR_CANID 18
 
 #define PIN1 5
 #define PIN2 18
@@ -72,3 +73,5 @@ int blinkFrequency = 2;
 int pinsCanSpacing = 100; //Time between CAN frames in milliseconds
 unsigned long pinsCanTime = 0; //Used for timing CAN messages
 int canArray = 0;
+float tLow = 0.95;
+float tHigh = 0.64;

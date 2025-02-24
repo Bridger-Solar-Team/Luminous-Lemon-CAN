@@ -17,9 +17,7 @@ Adafruit_DS3502 digipot = Adafruit_DS3502();
 
 void setup() {
   //CAN setup
-  CAN.setPins(CRX, CTX);
-  CAN.begin(500E3);
-  CAN.onReceive(readCAN);
+  setupCAN();
 
   //Serial setup
   Serial.begin(115200);
@@ -32,9 +30,14 @@ void setup() {
 }
 
 void loop() {
-  updatePins();
+  // updatePins();
   updateCarFromCanInfo();
-  sendCanData();
+  // sendCanData();
   runMotor();
+  runLights();
+  if(newCanData) {
+    // printCAN();
+    newCanData = false;
+  }
 }
 

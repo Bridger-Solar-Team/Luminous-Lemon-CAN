@@ -46,18 +46,18 @@ void updateCarFromCanInfo() {
   batteryVoltageLV = canData[2][1]/10.0;
 
   //From the data logging board
-  sdFailure = canData[3][1] && 0b10000000;
+  sdFailure = canData[3][1] & 0b10000000;
 
   //From the BMS
   soc = canData[4][0]/200.0;
   dcl = canData[4][1]/2.0;
   ccl = canData[4][2]/2.0;
-  currentDraw = canData[4][3]/2.0;
-  overCurrent = canData[4][4] && 0b10000000;
-  overCharge = canData[4][4] && 0b01000000;
-  overDischarge = canData[4][4] && 0b00100000;
-  bmsFailure = canData[4][4] && 0b00010000;
-  overTemp = canData[4][4] && 0b00001000;
+  currentDraw = canData[4][3]/5.0;
+  overCurrent = canData[4][4] & 0b10000000;
+  overCharge = canData[4][4] & 0b01000000;
+  overDischarge = canData[4][4] & 0b00100000;
+  bmsFailure = canData[4][4] & 0b00010000;
+  overTemp = canData[4][4] & 0b00001000;
   workingVoltageLV = canData[4][5]/10.0 + 0.7;
 }
 

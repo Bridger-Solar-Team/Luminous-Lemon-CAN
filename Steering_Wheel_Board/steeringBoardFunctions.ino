@@ -19,8 +19,10 @@ void runLights() {
     digitalWrite(PWR3, blink);
   } else if (rightTurn) {
     digitalWrite(PWR2, blink);
+    digitalWrite(PWR3, LOW);
   } else if (leftTurn) {
     digitalWrite(PWR3, blink);
+    digitalWrite(PWR2, LOW);
   } else {
     digitalWrite(PWR2, LOW);
     digitalWrite(PWR3, LOW);
@@ -32,4 +34,8 @@ void updateBlink() {
     blinkTimer = millis();
     blink = !blink;
   }
+}
+
+float floatMap(float x, float in_min, float in_max, float out_min, float out_max) {
+  return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 }

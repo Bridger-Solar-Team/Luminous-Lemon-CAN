@@ -32,6 +32,9 @@
 #define PWR4 27
 #define PWR5 15
 
+#define DCL_WARNING_SETPOINT 20
+#define CCL_WARNING_SETPOINT 30
+
 bool powerOn;
 bool leftTurn;
 bool rightTurn;
@@ -41,14 +44,14 @@ bool dispToggle;
 bool hazzards;
 bool cruiseControl;
 bool brakePressed;
-int throttle;
+float throttle;
 
-int batteryVoltageLV;
-int workingvoltageLV;
+float batteryVoltageLV;
+float workingVoltageLV;
 
 bool sdFailure;
 
-int soc;
+float soc;
 int dcl;
 int ccl;
 int currentDraw;
@@ -58,6 +61,7 @@ bool overDischarge;
 bool bmsFailure;
 bool overTemp;
 
+int canArray = 0;
 bool blink = false;
 unsigned long blinkTimer = 0; //Used for flashing lights
 int blinkFrequency = 2;
