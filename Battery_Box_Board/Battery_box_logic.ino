@@ -10,6 +10,7 @@ bool allowRun() {
     currentTimer = millis();
     // Serial.println(" U");
   }
+
   if (
     soc > 0.05
     // && dcl > 0
@@ -20,8 +21,9 @@ bool allowRun() {
     && !overDischarge
     && !bmsFailure
     && !overTemp
+    && millis() > 10000
   ) {
-    if(powerOn) {
+    if(/*true*/ powerOn) {
       Serial.println(" OK!");
       return true;
     } else {
@@ -30,6 +32,7 @@ bool allowRun() {
       return false;
     }
   }
+  powerOnMillis = millis();
   Serial.print(" SOC:");
   Serial.print(soc);
   Serial.print(" DCL:");
@@ -55,10 +58,20 @@ bool allowRun() {
 
 void controlContactors() {
   digitalWrite(PWR1, allowRun());
-  if(millis()- powerOnMillis > 5000) {
+  if(millis()- powerOnMillis > 2000) {
     digitalWrite(PWR2, allowRun());
   } else {
     digitalWrite(PWR2, LOW);
-    Serial.println("precharging");
+    if(allowRun()) {
+      Serial.println("precharging");
+    }
+  }
+  if(millis() - powerOnMillis > 7000) {
+    digitalWrite(PWR3, allowRun());
+  } else {
+    digitalWrite(PWR3, LOW);
+    if(allowRun()) {
+      Serial.println("stabalizing");
+    }
   }
 }
