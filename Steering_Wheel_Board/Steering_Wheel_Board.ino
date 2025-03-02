@@ -39,7 +39,7 @@ void loop() {
 
   //Outputs
   sendCanData();
-  // printPinsData();
+  printPinsData();
   runLights();
   updateDisplay();
   

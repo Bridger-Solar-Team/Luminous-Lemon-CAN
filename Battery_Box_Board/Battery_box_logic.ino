@@ -1,11 +1,11 @@
 bool allowRun() {
   // Serial.print("Current Draw:");
   // Serial.print(currentDraw);
-  if(currentDraw > 40 && !currentOver) {
+  if(abs(currentDraw) > 40 && !currentOver) {
     currentTimer = millis();
     currentOver = true;
     // Serial.println(" O!");
-  } else if(currentDraw < 40) {
+  } else if(abs(currentDraw) <= 40) {
     currentOver = false;
     currentTimer = millis();
     // Serial.println(" U");
@@ -24,10 +24,16 @@ bool allowRun() {
     && millis() > 10000
   ) {
     if(/*true*/ powerOn) {
-      Serial.println(" OK!");
+      if(millis() - statusTimer > statusUpdateTime) {
+        Serial.println(" OK!");
+        statusTimer = millis();
+      }
       return true;
     } else {
-      Serial.println(" PWROFF");
+      if(millis() - statusTimer > statusUpdateTime) {
+        Serial.println(" PWROFF");
+        statusTimer = millis();
+      }
       powerOnMillis = millis();
       return false;
     }
@@ -57,20 +63,21 @@ bool allowRun() {
 }
 
 void controlContactors() {
-  digitalWrite(PWR1, allowRun());
+  contactorState = allowRun();
+  digitalWrite(PWR1, contactorState);
   if(millis()- powerOnMillis > 2000) {
-    digitalWrite(PWR2, allowRun());
+    digitalWrite(PWR2, contactorState);
   } else {
     digitalWrite(PWR2, LOW);
-    if(allowRun()) {
+    if(contactorState) {
       Serial.println("precharging");
     }
   }
   if(millis() - powerOnMillis > 7000) {
-    digitalWrite(PWR3, allowRun());
+    digitalWrite(PWR3, contactorState);
   } else {
     digitalWrite(PWR3, LOW);
-    if(allowRun()) {
+    if(contactorState) {
       Serial.println("stabalizing");
     }
   }

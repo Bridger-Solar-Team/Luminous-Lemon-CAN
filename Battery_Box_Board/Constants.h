@@ -65,3 +65,6 @@ int canArray = 0;
 unsigned long powerOnMillis = 0;
 unsigned long currentTimer = 0;
 bool currentOver = false;
+bool contactorState = false;
+int statusUpdateTime = 1000;
+unsigned long statusTimer = 0;

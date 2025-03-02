@@ -60,11 +60,11 @@ void updateCarFromCanInfo() {
   dcl = canData[4][1]/2.0;
   ccl = canData[4][2]/2.0;
   currentDraw = canData[4][3]/2.0;
-  overCurrent = canData[4][4] && 0b00000001;
-  overCharge = canData[4][4] && 0b00000010;
-  overDischarge = canData[4][4] && 0b00000100;
-  bmsFailure = canData[4][4] && 0b00001000;
-  overTemp = canData[4][4] && 0b00010000;
+  overCurrent = canData[4][4] & 0b00000001;
+  overCharge = canData[4][4] & 0b00000010;
+  overDischarge = canData[4][4] & 0b00000100;
+  bmsFailure = canData[4][4] & 0b00001000;
+  overTemp = canData[4][4] & 0b00010000;
   workingVoltageLV = canData[4][5]/10.0 + 0.7;
 }
 
