@@ -75,3 +75,4 @@ unsigned long pinsCanTime = 0; //Used for timing CAN messages
 int canArray = 0;
 float tLow = 0.35;
 float tHigh = 0.10;
+int speed;

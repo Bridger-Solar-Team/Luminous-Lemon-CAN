@@ -1,36 +1,26 @@
+void IRAM_ATTR speedTrigger() {
+  pulseSpace = millis() - pulseTime;
+  pulseTime = millis();
+}
+
 void setupPins() {
   //Pins setup
-  pinMode(PIN1, INPUT_PULLDOWN);
-  pinMode(PIN2, INPUT_PULLDOWN);
-  pinMode(PIN3, INPUT_PULLDOWN);
-  pinMode(PIN4, INPUT_PULLDOWN);
-  pinMode(PIN5, INPUT_PULLDOWN);
-  pinMode(PIN6, INPUT_PULLDOWN);
-  pinMode(PIN7, INPUT_PULLDOWN);
-  pinMode(PIN8, INPUT_PULLDOWN);
-  pinMode(PIN9, INPUT_PULLDOWN);
-  pinMode(PIN10, INPUT_PULLDOWN);
-  pinMode(PIN11, INPUT_PULLDOWN);
-  pinMode(PIN12, INPUT_PULLDOWN);
+  attachInterrupt(digitalPinToInterrupt(PIN9), speedTrigger, RISING);
 
   pinMode(PWR1, OUTPUT);
   pinMode(PWR2, OUTPUT);
+  pinMode(PWR3, OUTPUT);
   
   digitalWrite(PWR1, LOW);
   digitalWrite(PWR2, LOW);
+  digitalWrite(PWR3, LOW);
 }
 
 void updatePins() {
-  pins[1] = digitalRead(PIN1);
-  pins[2] = digitalRead(PIN2);
-  pins[3] = digitalRead(PIN3);
-  pins[4] = digitalRead(PIN4);
-  pins[5] = digitalRead(PIN5);
-  pins[6] = digitalRead(PIN6);
-  pins[7] = digitalRead(PIN7);
-  pins[8] = digitalRead(PIN8);
-  pins[9] = digitalRead(PIN9);
-  pins[10] = digitalRead(PIN10);
-  pins[11] = digitalRead(PIN11);
-  pins[12] = analogRead(PIN12);
+
+}
+
+void calculateSpeed() {
+  speed = (1/(pulseSpace*16.0/1000.0))*3600.0 * 3.1415*21.25/(5280.0*12.0);
+  speed = min(speed, (float) 99.0);
 }

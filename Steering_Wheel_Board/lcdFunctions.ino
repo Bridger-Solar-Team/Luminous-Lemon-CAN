@@ -8,8 +8,9 @@ void updateDisplay() {
   line1 = "";
   if(dispToggle) {
     //Speed, 0-99 miles per hour
-    line0 += "?"; //1
-    line0 += "?"; //2
+    
+    line0 += (int)(round(speed)/10)%10; //1
+    line0 += (int)round(speed)%10; //2
     line0 += "MPH "; //3,4,5,6
 
     //Brake pedal. BRAKE when braking, motor percent power otherwise

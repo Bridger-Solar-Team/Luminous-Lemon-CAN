@@ -32,12 +32,17 @@ void setup() {
 void loop() {
   // updatePins();
   updateCarFromCanInfo();
-  // sendCanData();
+  calculateSpeed();
+  
+  sendCanData();
   runMotor();
   runLights();
   if(newCanData) {
     // printCAN();
     newCanData = false;
   }
+  printFaults();
+  printSpeed();
+  printMotorInfo();
 }
 

@@ -19,18 +19,16 @@ void sendCanData() {
   if(millis() - pinsCanTime > pinsCanSpacing) {
     //Can Frame Prep Code
     byte canFrame[8];
-    // canFrame[1] = min(batteryVoltageLV*10.0,255.0);
-    // Serial.print("Frame data: ");
-    // Serial.print(canFrame[1]);
-    // Serial.print(" Batt Var: ");
-    // Serial.println(batteryVoltageLV);
+    canFrame[0] = (int) speed;
+    Serial.println(canFrame[0]);
 
     //Can Frame Code
-    CAN.beginPacket(BATTERYBOX_CANID);
+    CAN.beginPacket(REAR_CANID);
     for (int i = 0; i < 8; i++) {
       CAN.write(canFrame[i]);
     }
     CAN.endPacket();
+    
     //End Can Frame Code
     pinsCanTime = millis();
   }

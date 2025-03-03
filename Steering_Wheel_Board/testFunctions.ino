@@ -17,6 +17,8 @@ void printPinsData() {
   Serial.print(cruiseControl);
   Serial.print(" Brake:");
   Serial.print(brakePressed);
+  Serial.print(" Spd:");
+  Serial.print(speed);
   Serial.print(" Thr:");
   Serial.println(throttle);
 }

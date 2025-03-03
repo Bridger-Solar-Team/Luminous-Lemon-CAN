@@ -61,6 +61,9 @@ void updateCarFromCanInfo() {
   bmsFailure = canData[4][6] & 0b00010000;
   overTemp = canData[4][6] & 0b00001000;
   workingVoltageLV = canData[4][5]/10.0 + 0.7;
+
+  //from the rear
+  speed = canData[5][0];
 }
 
 
@@ -83,6 +86,9 @@ void readCAN(int packetSize) {
     //BMS Messages
     case BMS_CANID:
       canArray = 4;
+      break;
+    case REAR_CANID:
+      canArray = 5;
       break;
     default: 
       canArray = 0;
