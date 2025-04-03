@@ -1,3 +1,4 @@
+
 //The last number in the CAN ID is 12 for the dash baord,
   //25 for the battery box board, 11 for the data logging board,
   //and 30 for the BMS
@@ -73,6 +74,6 @@ int blinkFrequency = 2;
 int pinsCanSpacing = 100; //Time between CAN frames in milliseconds
 unsigned long pinsCanTime = 0; //Used for timing CAN messages
 int canArray = 0;
-float tLow = 0.35;
-float tHigh = 0.10;
+float tLow = 0;
+float tHigh = 1;
 int speed;
