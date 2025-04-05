@@ -20,8 +20,8 @@ void sendCanData() {
     //Can Frame Prep Code
     byte canFrame[8];
     canFrame[0] += powerOn << 7;
-    canFrame[0] += leftTurn << 6;
-    canFrame[0] += rightTurn << 5;
+    // canFrame[0] += leftTurn << 6;
+    // canFrame[0] += rightTurn << 5;
     canFrame[0] += horn << 4;
     canFrame[0] += fwdRev << 3;
     canFrame[0] += dispToggle << 2;

@@ -74,6 +74,6 @@ int blinkFrequency = 2;
 int pinsCanSpacing = 100; //Time between CAN frames in milliseconds
 unsigned long pinsCanTime = 0; //Used for timing CAN messages
 int canArray = 0;
-float tLow = 0;
-float tHigh = 1;
+float tLow = 0.24;
+float tHigh = 0.08;
 int speed;
