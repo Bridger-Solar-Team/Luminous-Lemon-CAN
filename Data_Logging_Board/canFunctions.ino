@@ -33,7 +33,7 @@ void sendCanData() {
 
 void updateCarFromCanInfo() {
   //From the dash board
-  powerOn = (canData[1][0] >= 0x80);
+  powerOn = canData[1][0] & 0b10000000;
   leftTurn = canData[1][0] & 0b01000000;
   rightTurn = canData[1][0] & 0b00100000;
   horn = canData[1][0] & 0b00010000;

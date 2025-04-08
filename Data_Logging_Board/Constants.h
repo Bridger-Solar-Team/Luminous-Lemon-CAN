@@ -20,6 +20,11 @@
 #define PIN11 36
 #define PIN12 39
 
+#define MISO 19
+#define MOSI 23
+#define SCK 18
+#define CS 5
+
 #define SCL 22
 #define SDA 21
 
