@@ -37,30 +37,30 @@
 #define PWR4 27
 #define PWR5 15
 
-bool powerOn;
-bool leftTurn;
-bool rightTurn;
-bool horn;
-bool fwdRev;
-bool dispToggle;
-bool hazzards;
-bool cruiseControl;
-bool brakePressed;
-float throttle;
+bool powerOn = false;
+bool leftTurn = false;
+bool rightTurn = false;
+bool horn = false;
+bool fwdRev = false;
+bool dispToggle = false;
+bool hazzards = false;
+bool cruiseControl = false;
+bool brakePressed = false;
+float throttle = 0;
 
-float batteryVoltageLV;
-float workingVoltageLV;
+float batteryVoltageLV = 0;
+float workingVoltageLV = 0;
 
-bool sdFailure;
+bool sdFailure = false;
 
-float soc;
-int dcl;
-int ccl;
-float currentDraw;
-bool overCurrent;
-bool overCharge;
-bool overDischarge;
-bool bmsFailure;
-bool overTemp;
+float soc = 0.5;
+int dcl = 50;
+int ccl = 40;
+float currentDraw = 0;
+bool overCurrent = false;
+bool overCharge = false;
+bool overDischarge = false;
+bool bmsFailure = false;
+bool overTemp = false;
 
 int canArray = 0;

@@ -27,6 +27,9 @@ void setup() {
   //Serial setup
   Serial.begin(115200);
 
+
+  //Setup SD card
+  setupSD();
 }
 
 void loop() {
