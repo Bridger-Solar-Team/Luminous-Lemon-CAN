@@ -1,5 +1,8 @@
 #include <CAN.h>
 #include <Adafruit_DS3502.h>
+#include <SPI.h>
+#include <SD.h>
+
 #include "Constants.h"
 
 //Keep track of CAN receiving messages
@@ -15,6 +18,10 @@ unsigned long pinsCanTime = 0;
 //Digipot setup
 Adafruit_DS3502 digipot = Adafruit_DS3502();
 
+//Data logging file
+File dataFile;
+unsigned long lastLogTime = 0;
+
 void setup() {
   //CAN setup
   setupCAN();
@@ -27,6 +34,9 @@ void setup() {
   
   //Pins Setup
   setupPins();
+
+  //Setup SD card
+  setupSD();
 }
 
 void loop() {
@@ -41,8 +51,14 @@ void loop() {
     // printCAN();
     newCanData = false;
   }
-  printFaults();
-  printSpeed();
-  printMotorInfo();
+
+  //Logging every 100ms
+  if (millis()-lastLogTime > 100) {
+    lastLogTime = millis();
+    logData();
+    printFaults();
+    printSpeed();
+    printMotorInfo();
+  }
 }
 

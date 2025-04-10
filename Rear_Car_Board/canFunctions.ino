@@ -20,7 +20,7 @@ void sendCanData() {
     //Can Frame Prep Code
     byte canFrame[8];
     canFrame[0] = (int) speed;
-    Serial.println(canFrame[0]);
+    // Serial.println(canFrame[0]);
 
     //Can Frame Code
     CAN.beginPacket(REAR_CANID);
@@ -51,7 +51,7 @@ void updateCarFromCanInfo() {
   batteryVoltageLV = canData[2][1]/10.0;
 
   //From the data logging board
-  sdFailure = canData[3][1] && 0b10000000;
+  // sdFailure = canData[3][1] && 0b10000000;
 
   //From the BMS
   soc = canData[4][0]/200.0;
