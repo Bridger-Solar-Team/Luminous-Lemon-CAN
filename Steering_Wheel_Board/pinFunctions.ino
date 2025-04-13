@@ -49,5 +49,5 @@ void updateCarFromPins() {
   throttle = floatMap(pins[12]/4095.0, tLow, tHigh, 0.0, 1.0);
   throttle = max(throttle, (float) 0.0);
   throttle = min(throttle, (float) 1.0);
-  throttle = throttle * (dcl/40);
+  throttle = throttle * (dcl/40.0);
 }

@@ -50,7 +50,7 @@ void updateCarFromCanInfo() {
 
   //From the BMS
   soc = canData[4][0]/200.0;
-  dcl = canData[4][1]/2.0;
+  dcl = canData[4][1];
   cellLowV = canData[4][2]/50.0;
   currentDraw = canData[4][3]/5.0;
   cellHighTemp = canData[4][4];
