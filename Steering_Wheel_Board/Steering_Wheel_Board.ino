@@ -36,6 +36,7 @@ void loop() {
 
   //Calculation
   steeringCalculations();
+  calculateFaults();
 
   //Outputs
   sendCanData();

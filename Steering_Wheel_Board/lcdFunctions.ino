@@ -20,8 +20,6 @@ void updateDisplay() {
     else {
       if(dcl < DCL_WARNING_SETPOINT) {
         line0 += "DCL"; //7,8,9
-      } else if(ccl < CCL_WARNING_SETPOINT) {
-        line0 += "CCL"; //7,8,9
       } else {
         line0 += "MTR"; //7,8,9
       }
@@ -40,23 +38,7 @@ void updateDisplay() {
     //Cruise control switch. 0 when out, 1 when in
     if(cruiseControl) {
       line0 += " CRS"; //13,14,15,16
-    }
-    else if(overCharge) {
-      line0 += " OCG"; //13, 14, 15, 16
-    }
-    else if(overCurrent) {
-      line0 += " CUR"; //13,14,15,16
-    }
-    else if (overDischarge) {
-      line0 += " DIS"; //13,14,15,16
-    }
-    else if (overTemp) {
-      line0 += " TMP";
-    }
-    else if(bmsFailure) {
-      line0 += " BMS"; //13,14,15,16
-    }
-    else {
+    } else {
       line0 += " N/A"; //13,14,15,16
     }
     //End of the top row
@@ -68,10 +50,10 @@ void updateDisplay() {
     line1 += "% "; //5, 6
 
     //Main power switch. PWR ON when on, PWROFF when off
-    if(calculateFaults()) {
+    if(fault) {
       line1 += "FLT "; //7, 8, 9, 10
-      line1 += canData[4][4] && 0b00001111; //11
-      line1 += canData[4][4] && 0b11110000; //12
+      line1 += canData[4][6] & 0b00001111; //11
+      line1 += canData[4][6] & 0b11110000; //12
     } else if(powerOn) {
       line1 += "PWR ON"; //7,8,9,10,11,12
     } else {
@@ -86,24 +68,41 @@ void updateDisplay() {
     else {line1 += "0";} //16
   }
   else {
-    line0 += "W"; //1
-    line0 += (int)(workingVoltageLV/10)%10;//2
-    line0 += (int)(workingVoltageLV)%10;//3
-    line0 += ".";//4
-    line0 += (int)round(workingVoltageLV*10)%10;//5
-    line0 += "B"; //6
+    line0 += (int)(workingVoltageLV/10)%10;//1
+    line0 += (int)(workingVoltageLV)%10;//2
+    line0 += ".";//3
+    line0 += (int)round(workingVoltageLV*10)%10;//4
+    line0 += " B"; //5,6
     line0 += (int)(batteryVoltageLV/10)%10;//7
     line0 += (int)(batteryVoltageLV)%10;//8
     line0 += ".";//9
     line0 += (int)round(batteryVoltageLV*10)%10;//10
-    line0 += "P"; //11
+    line0 += " "; //11
     line0 += (int)(currentDraw/10)%10;//12
     line0 += (int)(currentDraw)%10;//13
     line0 += ".";//14
     line0 += (int)round(currentDraw*10)%10;//15
-    line0 += "A";
+    line0 += "A";//16
 
-    line1 += "XXC X.XX X.XX FF";
+    //line1 += "XXC X.XX X.XX FF";
+
+    line1 += (int)(cellHighTemp/10)%10;//1
+    line1 += (int)(cellHighTemp)%10;//2
+    line1 += "C "; //3,4
+    line1 += (int)(cellLowV)%10;//5
+    line1 += ".";//6
+    line1 += (int)(cellLowV*10)%10;//7
+    line1 += (int)round(cellLowV*100)%10;//8
+    line1 += " ";//9
+    line1 += (int)(cellHighV)%10;//10
+    line1 += ".";//11
+    line1 += (int)(cellHighV*10)%10;//12
+    line1 += (int)round(cellHighV*100)%10;//13
+    line1 += " ";//14
+    line1 += (char)canData[4][6] & 0b11110000;//15
+    line1 += (char)canData[4][6] & 0b00001111;//16
+
+
   }
 
   //Only update the display if the data has changed

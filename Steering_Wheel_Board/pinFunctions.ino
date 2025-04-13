@@ -36,7 +36,7 @@ void updatePins() {
 }
 
 void updateCarFromPins() {
-  powerOn = pins[1]%2;
+  powerOn = (pins[1]%2 && !fault);
   rightTurn = pins[2]%2;
   leftTurn = pins[3]%2;
   hazzards = pins[4]%2;
@@ -49,4 +49,5 @@ void updateCarFromPins() {
   throttle = floatMap(pins[12]/4095.0, tLow, tHigh, 0.0, 1.0);
   throttle = max(throttle, (float) 0.0);
   throttle = min(throttle, (float) 1.0);
+  throttle = throttle * (dcl/40);
 }

@@ -54,13 +54,18 @@ bool sdFailure;
 
 float soc;
 int dcl;
-int ccl;
+float cellLowV;
 int currentDraw;
-bool overCurrent;
-bool overCharge;
-bool overDischarge;
-bool bmsFailure;
-bool overTemp;
+int cellHighTemp;
+bool currentFail;
+bool voltageFail;
+bool cellLowFail;
+bool cellHighFail;
+bool thermFail;
+bool currSenseFail;
+bool bmsLogicFail;
+bool bmsHardFail;
+float cellHighV;
 
 String old_line0;
 String old_line1;
@@ -77,3 +82,5 @@ int canArray = 0;
 float tLow = 0.24;
 float tHigh = 0.08;
 int speed;
+
+bool fault = false;
