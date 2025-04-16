@@ -51,9 +51,8 @@ void updateDisplay() {
 
     //Main power switch. PWR ON when on, PWROFF when off
     if(fault) {
-      line1 += "FLT "; //7, 8, 9, 10
-      line1 += canData[4][6] & 0b00001111; //11
-      line1 += canData[4][6] & 0b11110000; //12
+      line1 += "FLT: "; //7, 8, 9, 10, 11
+      line1 += faultCode; //12
     } else if(powerOn) {
       line1 += "PWR ON"; //7,8,9,10,11,12
     } else {

@@ -84,3 +84,5 @@ float tHigh = 0.08;
 int speed;
 
 bool fault = false;
+int faultCode = 0;
+unsigned long overcurrentTime = 0;
