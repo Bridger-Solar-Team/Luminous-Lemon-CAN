@@ -1,7 +1,7 @@
 bool allowRun() {
   // Serial.print("Current Draw:");
   // Serial.print(currentDraw);
-  if(abs(currentDraw) > 40 && !currentOver) {
+  if(abs(currentDraw) > 40) {
     currentTimer = millis();
     currentOver = true;
     // Serial.println(" O!");
@@ -12,15 +12,19 @@ bool allowRun() {
   }
 
   if (
-    soc > 0.05
-    // && dcl > 0
+    soc > 0
+    && dcl > 0
     && millis() - currentTimer < 500
-    // && ccl > 0
-    && !overCurrent
-    && !overCharge
-    && !overDischarge
-    && !bmsFailure
-    && !overTemp
+    && !currentFail
+    && !voltageFail
+    && !cellLowFail
+    && !cellHighFail
+    && !thermFail
+    && !currSenseFail
+    && !bmsLogicFail
+    && !bmsHardFail
+    && cellHighV <= 4.20
+    && cellLowV >= 3.00
     && millis() > 10000
   ) {
     if(/*true*/ powerOn) {
@@ -39,24 +43,24 @@ bool allowRun() {
     }
   }
   powerOnMillis = millis();
-  Serial.print(" SOC:");
-  Serial.print(soc);
-  Serial.print(" DCL:");
-  Serial.print(dcl);
-  Serial.print(" Current Draw:");
-  Serial.print(currentDraw);
-  Serial.print(" CCL:");
-  Serial.print(ccl);
-  Serial.print(" OvCurr:");
-  Serial.print(overCurrent);
-  Serial.print(" OvChar:");
-  Serial.print(overCharge);
-  Serial.print(" OvDis");
-  Serial.print(overDischarge);
-  Serial.print(" BMS Fail:");
-  Serial.print(bmsFailure);
-  Serial.print(" OvTemp: ");
-  Serial.print(overTemp);
+  // Serial.print(" SOC:");
+  // Serial.print(soc);
+  // Serial.print(" DCL:");
+  // Serial.print(dcl);
+  // Serial.print(" Current Draw:");
+  // Serial.print(currentDraw);
+  // Serial.print(" CCL:");
+  // Serial.print(ccl);
+  // Serial.print(" OvCurr:");
+  // Serial.print(overCurrent);
+  // Serial.print(" OvChar:");
+  // Serial.print(overCharge);
+  // Serial.print(" OvDis");
+  // Serial.print(overDischarge);
+  // Serial.print(" BMS Fail:");
+  // Serial.print(bmsFailure);
+  // Serial.print(" OvTemp: ");
+  // Serial.print(overTemp);
   // Serial.print(millis() - currentTimer);
   Serial.println(" BAD");
   return false;

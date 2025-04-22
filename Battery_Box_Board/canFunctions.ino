@@ -57,17 +57,20 @@ void updateCarFromCanInfo() {
 
   //From the BMS
   soc = canData[4][0]/200.0;
-  dcl = canData[4][1]/2.0;
-  ccl = canData[4][2]/2.0;
-  int16_t midCalcCurrent = 0;
-  midCalcCurrent = ((canData[4][3] << 8) + canData[4][4]);
-  currentDraw = midCalcCurrent/10.0;
-  overCurrent = canData[4][6] & 0b00000001;
-  overCharge = canData[4][6] & 0b00000010;
-  overDischarge = canData[4][6] & 0b00000100;
-  bmsFailure = canData[4][6] & 0b00001000;
-  overTemp = canData[4][6] & 0b00010000;
+  dcl = canData[4][1];
+  cellLowV = canData[4][2]/50.0;
+  currentDraw = canData[4][3]/5.0;
+  cellHighTemp = canData[4][4];
   workingVoltageLV = canData[4][5]/10.0 + 0.7;
+  currentFail = canData[4][6] & 0b10000000;
+  voltageFail = canData[4][6] & 0b01000000;
+  cellLowFail = canData[4][6] & 0b00100000;
+  cellHighFail = canData[4][6] & 0b00010000;
+  thermFail = canData[4][6] & 0b00001000;
+  currSenseFail = canData[4][6] & 0b00000100;
+  bmsLogicFail = canData[4][6] & 0b00000010;
+  bmsHardFail = canData[4][6] & 0b00000001;
+  cellHighV = canData[4][7]/50.0;
 }
 
 
