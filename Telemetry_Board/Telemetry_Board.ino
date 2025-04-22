@@ -13,8 +13,8 @@ void setup() {
 
 void sendData() {
   if(millis() - lastTime > 500) {
-    SerialPort.print(dataToSend);
-    Serial.println(dataToSend);
+    SerialPort.print(dataToSend+2);
+    Serial.println(dataToSend+2);
     dataToSend++;
     dataToSend = dataToSend%2;
     lastTime = millis();
@@ -24,7 +24,7 @@ void sendData() {
 void loop() { 
   sendData();
   while(SerialPort.available() > 0) {
-    Serial.print(SerialPort.read());
+    Serial.print("Remote data: ");
+    Serial.println(SerialPort.read());
   }
-  delay(1);
 }
