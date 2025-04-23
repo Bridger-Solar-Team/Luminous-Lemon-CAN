@@ -63,7 +63,7 @@ void loop() {
   if (millis()-lastLogTime > 100) {
     lastLogTime = millis();
     logData();
-    printFaults();
+    // printFaults();
     printSpeed();
     printMotorInfo();
   }

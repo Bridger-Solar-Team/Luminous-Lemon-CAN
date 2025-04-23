@@ -58,13 +58,18 @@ bool sdFailure;
 
 float soc;
 int dcl;
-int ccl;
+float cellLowV;
 int currentDraw;
-bool overCurrent;
-bool overCharge;
-bool overDischarge;
-bool bmsFailure;
-bool overTemp;
+int cellHighTemp;
+bool currentFail;
+bool voltageFail;
+bool cellLowFail;
+bool cellHighFail;
+bool thermFail;
+bool currSenseFail;
+bool bmsLogicFail;
+bool bmsHardFail;
+float cellHighV;
 
 int canArray = 0;
 bool blink = false;

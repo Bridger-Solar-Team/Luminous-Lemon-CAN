@@ -24,18 +24,23 @@ void transmitData() {
 
     //Add battery box data
     dataWriting += addComma(String(batteryVoltageLV));
-
+    
     //Add BMS data
-    dataWriting += addComma(String(soc));
-    dataWriting += addComma(String(dcl));
-    dataWriting += addComma(String(ccl));
-    dataWriting += addComma(String(currentDraw));
-    dataWriting += addComma(String(overCurrent));
-    dataWriting += addComma(String(overCharge));
-    dataWriting += addComma(String(overDischarge));
-    dataWriting += addComma(String(bmsFailure));
-    dataWriting += addComma(String(overTemp));
     dataWriting += addComma(String(workingVoltageLV));
+    dataWriting += addComma(String(soc));
+    dataWriting += addComma(String(cellLowV));
+    dataWriting += addComma(String(cellHighV));
+    dataWriting += addComma(String(dcl));
+    dataWriting += addComma(String(currentDraw));
+    dataWriting += addComma(String(cellHighTemp));
+    dataWriting += addComma(String(currentFail));
+    dataWriting += addComma(String(voltageFail));
+    dataWriting += addComma(String(cellLowFail));
+    dataWriting += addComma(String(cellHighFail));
+    dataWriting += addComma(String(thermFail));
+    dataWriting += addComma(String(currSenseFail));
+    dataWriting += addComma(String(bmsLogicFail));
+    dataWriting += addComma(String(bmsHardFail));
 
     //Add rear board data
     dataWriting += addComma(String(speed));

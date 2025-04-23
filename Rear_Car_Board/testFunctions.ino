@@ -1,13 +1,13 @@
-void printFaults() {
-  Serial.print("OvCur:");
-  Serial.print(overCurrent);
-  Serial.print(" OvChg:");
-  Serial.print(overCharge);
-  Serial.print(" OvDcg:");
-  Serial.print(overDischarge);
-  Serial.print(" OvTmp:");
-  Serial.print(overTemp);
-}
+// void printFaults() {
+//   Serial.print("OvCur:");
+//   Serial.print(overCurrent);
+//   Serial.print(" OvChg:");
+//   Serial.print(overCharge);
+//   Serial.print(" OvDcg:");
+//   Serial.print(overDischarge);
+//   Serial.print(" OvTmp:");
+//   Serial.print(overTemp);
+// }
 
 void printMotorInfo() {
   Serial.print(" Fwd:");
