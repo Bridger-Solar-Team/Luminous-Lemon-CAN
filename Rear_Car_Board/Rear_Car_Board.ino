@@ -2,8 +2,12 @@
 #include <Adafruit_DS3502.h>
 #include <SPI.h>
 #include <SD.h>
+#include <HardwareSerial.h>
 
 #include "Constants.h"
+
+//rfd900+ serial radio setup
+HardwareSerial SerialPort(2); // use UART2
 
 //Keep track of CAN receiving messages
 char canData[6][8];
@@ -37,6 +41,9 @@ void setup() {
 
   //Setup SD card
   setupSD();
+
+  //Setup Telemetry Radio
+  setupRadios();
 }
 
 void loop() {
@@ -60,5 +67,8 @@ void loop() {
     printSpeed();
     printMotorInfo();
   }
+  
+  //Telemetry
+  transmitData();
 }
 

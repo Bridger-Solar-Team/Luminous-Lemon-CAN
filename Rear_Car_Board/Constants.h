@@ -73,3 +73,6 @@ int blinkFrequency = 2;
 float speed = 0;
 unsigned long pulseTime = 0;
 int pulseSpace = 0;
+
+unsigned long lastRadioTime = 0;
+String dataToSend;
