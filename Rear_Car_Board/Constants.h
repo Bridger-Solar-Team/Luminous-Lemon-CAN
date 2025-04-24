@@ -59,7 +59,7 @@ bool sdFailure;
 float soc;
 int dcl;
 float cellLowV;
-int currentDraw;
+float currentDraw;
 int cellHighTemp;
 bool currentFail;
 bool voltageFail;

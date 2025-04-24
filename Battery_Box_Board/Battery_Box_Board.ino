@@ -39,9 +39,6 @@ void loop() {
   sendCanData();
   controlContactors();
   if(newCanData && canArray == 1) {
-    // Serial.println(canData[4][4] && 0b00000100);
-    // Serial.print((canData[1][0] >= 0x80));
-    // Serial.println(canData[1][0], HEX);
     newCanData = false;
   }
 }
