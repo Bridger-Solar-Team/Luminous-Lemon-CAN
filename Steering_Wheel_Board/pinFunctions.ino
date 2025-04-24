@@ -42,10 +42,10 @@ void updateCarFromPins() {
   hazzards = pins[4]%2;
   fwdRev = pins[5]%2;
   dispToggle = pins[6]%2;
-  horn = pins[7]%2;
+  // horn = pins[7]%2;
   cruiseControl = pins[8]%2;
-  brakePressed = pins[9]%2;
-  brakePressed = false;
+  // Serial.print(pins[9]);
+  brakePressed = pins[7]%2;
   throttle = floatMap(pins[12]/4095.0, tLow, tHigh, 0.0, 1.0);
   throttle = max(throttle, (float) 0.0);
   throttle = min(throttle, (float) 1.0);
