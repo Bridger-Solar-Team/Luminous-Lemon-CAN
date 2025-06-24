@@ -45,7 +45,7 @@ void loop() {
   updateDisplay();
   
   if(newCanData) {
-    // printBMSdata();
+    printBMSdata();
     newCanData = false;
   }
 }
