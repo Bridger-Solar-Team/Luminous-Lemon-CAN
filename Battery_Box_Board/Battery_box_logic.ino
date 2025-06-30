@@ -62,7 +62,7 @@ bool allowRun() {
   // Serial.print(" OvTemp: ");
   // Serial.print(overTemp);
   // Serial.print(millis() - currentTimer);
-  Serial.println(" BAD");
+  // Serial.println(" BAD");
   return false;
 }
 

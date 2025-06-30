@@ -38,8 +38,11 @@ void loop() {
   //Outputs
   sendCanData();
   controlContactors();
-  if(newCanData && canArray == 1) {
+  // Serial.println("looping!");
+  if(newCanData) {
+    Serial.println(dataID);
     newCanData = false;
+    printCAN();
   }
 }
 

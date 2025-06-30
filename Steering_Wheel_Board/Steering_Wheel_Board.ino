@@ -26,26 +26,38 @@ void setup() {
   lcd.backlight();
 
   setupPins();
+  Serial.println("Setup complete!");
 }
 
 void loop() {
+  // Serial.print(millis());
+  // Serial.println("Start of loop");
   //Inputs
   updatePins();
   updateCarFromCanInfo();
   updateCarFromPins();
 
+  // Serial.println("Inputs read");
+
   //Calculation
   steeringCalculations();
   calculateFaults();
 
+  // Serial.println("Calculated");
+
   //Outputs
   sendCanData();
-  printPinsData();
+  // Serial.println("Send can data");
+  // printPinsData();
+  // Serial.println("printed pins");
   runLights();
+  // Serial.println("Ran lights");
   updateDisplay();
+  // Serial.println("Updated display");
   
   if(newCanData) {
     printBMSdata();
+    Serial.println("CAN received");
     newCanData = false;
   }
 }

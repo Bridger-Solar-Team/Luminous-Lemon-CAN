@@ -17,6 +17,7 @@ void setupCAN() {
 
 void sendCanData() {
   if(millis() - pinsCanTime > pinsCanSpacing) {
+    Serial.println("CAN Sent");
     //Can Frame Prep Code
     byte canFrame[8];
     canFrame[0] = (int) speed;

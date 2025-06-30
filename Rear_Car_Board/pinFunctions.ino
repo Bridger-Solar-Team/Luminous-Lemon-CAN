@@ -21,6 +21,10 @@ void updatePins() {
 }
 
 void calculateSpeed() {
-  speed = (1/pulseSpace*1000/16)*3600.0 * 3.1415*21.25/(5280.0*12.0);
+  if(pulseSpace == 0) {
+    speed = 0;
+  } else {
+    speed = (1/pulseSpace*1000/16)*3600.0 * 3.1415*21.25/(5280.0*12.0);
+  }
   speed = min(speed, (float) 99.0);
 }

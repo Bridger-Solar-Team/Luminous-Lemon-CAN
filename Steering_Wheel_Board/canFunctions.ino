@@ -16,6 +16,7 @@ void setupCAN() {
 }
 
 void sendCanData() {
+  // Serial.println("Starting can sending");
   if(millis() - pinsCanTime > pinsCanSpacing) {
     //Can Frame Prep Code
     byte canFrame[8];
@@ -30,12 +31,19 @@ void sendCanData() {
     canFrame[1] += brakePressed << 7;
     canFrame[2] = throttle*200.0;
 
+    // Serial.println("Built CAN bytes");
+
     //Can Frame Code
     CAN.beginPacket(DASH_CANID);
+    // Serial.println("Began can packet");
     for (int i = 0; i < 8; i++) {
       CAN.write(canFrame[i]);
+      // Serial.print("Wrote byte number ");
+      // Serial.println(i);
     }
+    // Serial.println("Wrote CAN frame");
     CAN.endPacket();
+    // Serial.println("Ended can packet");
     //End Can Frame Code
     pinsCanTime = millis();
   }

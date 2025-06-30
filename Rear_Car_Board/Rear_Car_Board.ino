@@ -32,6 +32,7 @@ void setup() {
 
   //Serial setup
   Serial.begin(115200);
+  Serial.println("New Program");
 
   //Digipot Setup
   digipot.begin();
@@ -58,6 +59,8 @@ void loop() {
     // printCAN();
     newCanData = false;
   }
+
+  Serial.println(digipot.getWiper());
 
   //Logging every 100ms
   if (millis()-lastLogTime > 100) {
