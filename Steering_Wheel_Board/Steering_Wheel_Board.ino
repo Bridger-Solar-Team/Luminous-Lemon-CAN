@@ -14,6 +14,9 @@ int pins[13];
 LiquidCrystal_I2C lcd(0x27, 16, 2);
 
 void setup() {
+
+  turnOnCamera();
+  
   //CAN setup
   setupCAN();
 
@@ -57,7 +60,9 @@ void loop() {
   
   if(newCanData) {
     printBMSdata();
-    Serial.println("CAN received");
+    // Serial.println("CAN received");
+    Serial.print("Estop: ");
+    Serial.println(estop);
     newCanData = false;
   }
 }

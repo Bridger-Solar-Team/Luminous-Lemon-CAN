@@ -60,10 +60,11 @@ void loop() {
     newCanData = false;
   }
 
-  Serial.println(digipot.getWiper());
+
 
   //Logging every 100ms
   if (millis()-lastLogTime > 100) {
+    Serial.println(digipot.getWiper());
     lastLogTime = millis();
     logData();
     // printFaults();

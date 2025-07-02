@@ -46,6 +46,7 @@ void updateCarFromCanInfo() {
   hazzards = canData[1][0] & 0b00000010;
   cruiseControl = canData[1][0] & 0b00000001;
   brakePressed = canData[1][1] & 0b10000000;
+  estop = canData[1][1] & 0b01000000;
   throttle = canData[1][2]/200.0;
 
   //From the battery box board

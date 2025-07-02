@@ -27,7 +27,7 @@ bool allowRun() {
     && cellLowV >= 3.00
     && millis() > 10000
   ) {
-    if(/*true*/ powerOn) {
+    if(true /*powerOn*/) {
       if(millis() - statusTimer > statusUpdateTime) {
         Serial.println(" OK!");
         statusTimer = millis();

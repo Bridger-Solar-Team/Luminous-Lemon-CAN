@@ -8,6 +8,14 @@ void steeringCalculations() {
   }
 }
 
+void turnOnCamera() {
+  digitalWrite(PWR4, HIGH);
+}
+
+void turnOffCamera() {
+  digitalWrite(PWR4, LOW);
+}
+
 void runLights() {
   updateBlink();
   if(hazzards) {

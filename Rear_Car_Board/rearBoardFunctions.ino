@@ -14,12 +14,13 @@ void runLights() {
   if (
     !currentFail
     && !voltageFail
-    && !cellLowFail 
+    && !cellLowFail
     && !cellHighFail
     && !thermFail
     && !currSenseFail
     && !bmsLogicFail
     && !bmsHardFail
+    && !estop
   ) {
     digitalWrite(PWR2, LOW);
   } else {

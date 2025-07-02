@@ -70,6 +70,7 @@ bool currSenseFail;
 bool bmsLogicFail;
 bool bmsHardFail;
 float cellHighV;
+bool estop = false;
 
 int canArray = 0;
 bool blink = false;

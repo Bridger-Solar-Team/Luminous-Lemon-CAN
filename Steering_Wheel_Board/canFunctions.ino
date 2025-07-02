@@ -20,7 +20,11 @@ void sendCanData() {
   if(millis() - pinsCanTime > pinsCanSpacing) {
     //Can Frame Prep Code
     byte canFrame[8];
-    canFrame[0] += powerOn << 7;
+    if(!fault) {
+      canFrame[0] += powerOn << 7;
+    } else {
+      canFrame[0] = 0;
+    }
     // canFrame[0] += leftTurn << 6;
     // canFrame[0] += rightTurn << 5;
     canFrame[0] += horn << 4;
@@ -29,6 +33,7 @@ void sendCanData() {
     canFrame[0] += hazzards << 1;
     canFrame[0] += cruiseControl;
     canFrame[1] += brakePressed << 7;
+    canFrame[1] += fault << 6;
     canFrame[2] = throttle*200.0;
 
     // Serial.println("Built CAN bytes");
@@ -60,7 +65,13 @@ void updateCarFromCanInfo() {
   soc = canData[4][0]/200.0;
   dcl = canData[4][1];
   cellLowV = canData[4][2]/50.0;
-  currentDraw = canData[4][3]/5.0;
+
+  currentDraw = ((byte) canData[4][3]);
+  if(currentDraw > 120) {
+    currentDraw -= 256;
+  }
+  currentDraw = currentDraw/2.5;
+
   cellHighTemp = canData[4][4];
   workingVoltageLV = canData[4][5]/10.0 + 0.7;
   currentFail = canData[4][6] & 0b10000000;
