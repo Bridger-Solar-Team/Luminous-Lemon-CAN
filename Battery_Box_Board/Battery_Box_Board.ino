@@ -40,9 +40,9 @@ void loop() {
   controlContactors();
   // Serial.println("looping!");
   if(newCanData) {
-    // Serial.println(dataID);
+    Serial.println(dataID);
     newCanData = false;
-    // printCAN();
+    printCAN();
   }
 }
 

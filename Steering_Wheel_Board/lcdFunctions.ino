@@ -76,11 +76,15 @@ void updateDisplay() {
     line0 += (int)(batteryVoltageLV)%10;//8
     line0 += ".";//9
     line0 += (int)round(batteryVoltageLV*10)%10;//10
-    line0 += " "; //11
-    line0 += (int)(currentDraw/10)%10;//12
-    line0 += (int)(currentDraw)%10;//13
+    if(currentDraw >= 0) {
+      line0 += " "; //11
+    } else {
+      line0 += "-"; //11
+    }
+    line0 += (int)(abs(currentDraw)/10)%10;//12
+    line0 += (int)(abs(currentDraw))%10;//13
     line0 += ".";//14
-    line0 += (int)round(currentDraw*10)%10;//15
+    line0 += (int)round(abs(currentDraw)*10)%10;//15
     line0 += "A";//16
 
     //line1 += "XXC X.XX X.XX FF";

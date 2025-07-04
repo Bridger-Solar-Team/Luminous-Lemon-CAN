@@ -34,7 +34,7 @@ void setup() {
 
 void loop() {
   // Serial.print(millis());
-  // Serial.println("Start of loop");
+  Serial.println("Start of loop");
   //Inputs
   updatePins();
   updateCarFromCanInfo();
@@ -59,6 +59,7 @@ void loop() {
   // Serial.println("Updated display");
   
   if(newCanData) {
+    Serial.println(dataID);
     printBMSdata();
     // Serial.println("CAN received");
     Serial.print("Estop: ");

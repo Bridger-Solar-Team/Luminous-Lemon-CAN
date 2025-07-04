@@ -45,6 +45,7 @@ bool hazzards;
 bool cruiseControl;
 bool brakePressed;
 float throttle;
+bool fault = false;
 
 float batteryVoltageLV;
 float workingVoltageLV;

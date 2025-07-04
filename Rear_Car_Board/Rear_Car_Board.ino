@@ -56,8 +56,9 @@ void loop() {
   runMotor();
   runLights();
   if(newCanData) {
-    // printCAN();
+    printCAN();
     newCanData = false;
+    
   }
 
 
@@ -68,11 +69,20 @@ void loop() {
     lastLogTime = millis();
     logData();
     // printFaults();
-    printSpeed();
-    printMotorInfo();
+    // printSpeed();
+    // printMotorInfo();
   }
   
   //Telemetry
   transmitData();
+
+  if(newCanData) {
+    Serial.println(dataID);
+    printCAN();
+    // Serial.println("CAN received");
+    // Serial.print("Estop: ");
+    // Serial.println(estop);
+    newCanData = false;
+  }
 }
 

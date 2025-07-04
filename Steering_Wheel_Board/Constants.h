@@ -91,3 +91,7 @@ int speed;
 bool fault = false;
 int faultCode = 0;
 unsigned long overcurrentTime = 0;
+unsigned long cellLowTime = 0;
+unsigned long cellHighTime = 0;
+
+float useThrottle = 0.0;

@@ -47,6 +47,8 @@ void updateCarFromCanInfo() {
   hazzards = canData[1][0] & 0b00000010;
   cruiseControl = canData[1][0] & 0b00000001;
   brakePressed = canData[1][1] & 0b10000000;
+  fault = canData[1][1] & 0b01000000;
+
   throttle = canData[1][2]/200.0;
 
   //From the battery box board
@@ -59,7 +61,13 @@ void updateCarFromCanInfo() {
   soc = canData[4][0]/200.0;
   dcl = canData[4][1];
   cellLowV = canData[4][2]/50.0;
-  currentDraw = canData[4][3]/5.0;
+
+  currentDraw = ((byte) canData[4][3]);
+  if(currentDraw > 120) {
+    currentDraw -= 256;
+  }
+  currentDraw = currentDraw/2.5;
+
   cellHighTemp = canData[4][4];
   workingVoltageLV = canData[4][5]/10.0 + 0.7;
   currentFail = canData[4][6] & 0b10000000;

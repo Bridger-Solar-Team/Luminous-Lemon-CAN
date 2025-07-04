@@ -3,7 +3,7 @@ void setupRadios() {
 }
 
 void transmitData() {
-  if(millis() - lastRadioTime > 500) {
+  if(millis() - lastRadioTime > 200) {
     //Initialize data string to only write once
     String dataWriting;
 
@@ -46,7 +46,7 @@ void transmitData() {
     dataWriting += addComma(String(speed));
 
     SerialPort.println(dataWriting);
-    Serial.println(dataWriting);
+    // Serial.println(dataWriting);
     lastRadioTime = millis();
   }
 }

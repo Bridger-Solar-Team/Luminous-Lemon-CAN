@@ -1,8 +1,7 @@
 bool allowRun() {
   // Serial.print("Current Draw:");
   // Serial.print(currentDraw);
-  if(abs(currentDraw) > 40) {
-    currentTimer = millis();
+  if(abs(currentDraw) >= 40) {
     currentOver = true;
     // Serial.println(" O!");
   } else if(abs(currentDraw) <= 40) {
@@ -13,21 +12,22 @@ bool allowRun() {
 
   if (
     soc > 0
-    && dcl > 0
-    && millis() - currentTimer < 500
-    && !currentFail
-    && !voltageFail
-    && !cellLowFail
-    && !cellHighFail
-    && !thermFail
-    && !currSenseFail
-    && !bmsLogicFail
-    && !bmsHardFail
-    && cellHighV <= 4.20
-    && cellLowV >= 3.00
+    && !fault
+    // && dcl > 0
+    // && millis() - currentTimer < 250
+    // && !currentFail
+    // && !voltageFail
+    // && !cellLowFail
+    // && !cellHighFail
+    // && !thermFail
+    // && !currSenseFail
+    // && !bmsLogicFail
+    // && !bmsHardFail
+    // && cellHighV <= 4.20
+    // && cellLowV >= 3.00
     && millis() > 10000
   ) {
-    if(true /*powerOn*/) {
+    if(/*true*/ powerOn) {
       if(millis() - statusTimer > statusUpdateTime) {
         Serial.println(" OK!");
         statusTimer = millis();

@@ -1,3 +1,5 @@
+
+
 void printCAN() {
   for(int j = 0; j < 5; j++) {
     Serial.print(j);
@@ -34,7 +36,8 @@ void sendCanData() {
     canFrame[0] += cruiseControl;
     canFrame[1] += brakePressed << 7;
     canFrame[1] += fault << 6;
-    canFrame[2] = throttle*200.0;
+
+    canFrame[2] = useThrottle*200.0;
 
     // Serial.println("Built CAN bytes");
 

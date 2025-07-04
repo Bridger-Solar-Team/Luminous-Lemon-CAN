@@ -1,3 +1,7 @@
+const int tArrLen = 100;
+float throttleArray[tArrLen];
+int inc = 0;
+
 void setupPins() {
   //Pins setup
   pinMode(PIN1, INPUT_PULLDOWN);
@@ -42,7 +46,7 @@ void updateCarFromPins() {
   hazzards = pins[4]%2;
   fwdRev = pins[5]%2;
   dispToggle = pins[6]%2;
-  // horn = pins[7]%2;
+  horn = pins[7]%2;
   cruiseControl = pins[8]%2;
   
   lastEstop = estopRaw;
@@ -53,9 +57,23 @@ void updateCarFromPins() {
   if(millis() - estopDebounceTime > 100) {
     estop = estopRaw;
   }
-  // Serial.print(pins[9]);  brakePressed = pins[7]%2;
+  // Serial.print(pins[9]);  
+  brakePressed = pins[7]%2;
   throttle = floatMap(pins[12]/4095.0, tLow, tHigh, 0.0, 1.0);
   throttle = max(throttle, (float) 0.0);
   throttle = min(throttle, (float) 1.0);
+
+  throttleArray[inc] = throttle;
+  inc++;
+  if(inc >= tArrLen) {
+    inc = 0;
+  }
+  useThrottle = throttle;
+  for(int i = 0; i < tArrLen; i++) {
+    if(throttleArray[i] > useThrottle) {
+      useThrottle = throttleArray[i];
+    }
+  }
+
   throttle = throttle * (dcl/40.0);
 }

@@ -57,7 +57,13 @@ void updateCarFromCanInfo() {
   soc = canData[4][0]/200.0;
   dcl = canData[4][1];
   cellLowV = canData[4][2]/50.0;
-  currentDraw = canData[4][3]/5.0;
+
+  currentDraw = ((byte) canData[4][3]);
+  if(currentDraw > 120) {
+    currentDraw -= 256;
+  }
+  currentDraw = currentDraw/2.5;
+
   cellHighTemp = canData[4][4];
   workingVoltageLV = canData[4][5]/10.0 + 0.7;
   currentFail = canData[4][6] & 0b10000000;
